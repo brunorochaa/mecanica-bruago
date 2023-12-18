@@ -1,0 +1,21 @@
+
+
+body {
+    font-family: tahoma;
+    color:#282828;
+    margin: 0px;
+}
+
+.corFundo {
+    background-color: white;
+}
+
+.titulo {
+    text-align: center;
+    text-transform: uppercase;
+    color: #282828;
+}
+
+.centralizado {
+    text-align: block;
+}
