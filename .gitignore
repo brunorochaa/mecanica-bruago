@@ -1,2 +1,13 @@
+# Configuração local (tem a senha do banco)
+config/config.php
+
+# Dependências e cache
+/vendor/
+/node_modules/
 /cache/
-/config/development/
+
+# IDEs e sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

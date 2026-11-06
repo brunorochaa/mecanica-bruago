@@ -1,18 +1,19 @@
 {
-    "name": "bruno/thiago",
-    "description": "Projeto Final",
+    "name": "brunorochaa/mecanica-bruago",
+    "description": "Sistema web de uma oficina mecânica: cadastro de clientes e serviços.",
     "type": "project",
     "license": "MIT",
     "authors": [
-        {
-            "name": "Bruno Rocha",
-            "email": "brunorochaamaral@gmail.com"
-        },
-        {
-            "name": "Thiago Dias",
-            "email": "thiago_dasd@hotmail.com"
-        }
+        { "name": "Bruno Rocha" },
+        { "name": "Thiago Dias" }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=8.2",
+        "ext-mbstring": "*",
+        "ext-pdo": "*"
+    },
+    "scripts": {
+        "test": "php tests/executar.php",
+        "serve": "php -S localhost:8000 -t public"
+    }
 }
