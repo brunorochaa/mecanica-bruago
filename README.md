@@ -50,6 +50,23 @@ php tests/executar.php
 
 Os testes usam SQLite em memória (extensão `pdo_sqlite`), então não precisam do MySQL.
 
+## Publicar em hospedagem gratuita (InfinityFree)
+
+Testado com PHP 8.4 e MySQL no plano grátis. A hospedagem só serve a pasta `htdocs`, então a árvore do projeto vai inteira para dentro dela e um `.htaccess` na raiz manda tudo para `public/`:
+
+```apache
+Options -Indexes
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+```
+
+1. No painel, crie um banco MySQL e importe o `banco/mecanica.sql` pelo phpMyAdmin **sem as linhas `CREATE DATABASE` e `USE`** (a hospedagem já cria o banco e o nome dele tem prefixo da conta).
+2. Envie por FTP, para dentro de `htdocs`, as pastas `public/`, `src/` e `templates/` e o `.htaccess` acima (arquivo oculto: ative "mostrar arquivos ocultos" no cliente de FTP).
+3. Crie `htdocs/config/config.php` **direto no servidor**, com o host, o usuário, o nome do banco e a senha que o painel mostra (formato do `config/config.example.php`). Nunca versione esse arquivo.
+4. Se não souber a versão do PHP da conta, envie um arquivo temporário com `<?php echo PHP_VERSION;` e apague-o depois. O projeto precisa do PHP 8.2 ou mais novo.
+
+> **Atenção:** enquanto não houver login, as telas de clientes e serviços ficam abertas para qualquer pessoa na internet (criar, editar e excluir). Use só dados fictícios.
 ## Estrutura
 
 ```text
@@ -81,6 +98,13 @@ tests/             # testes sem dependências
 - Senha do banco fora do repositório.
 - Ordem e direção da lista só aceitam valores de uma lista fixa (nunca vão direto para o SQL).
 
+## Próximos passos
+
+1. **Login de administrador:** proteger clientes, serviços e o painel (senha com `password_hash`, sessão segura, primeiro admin criado por script local, sem senha padrão no código).
+2. **Cadastro aberto de clientes e pedido de serviço:** qualquer pessoa cria conta (papel sempre "cliente", definido no servidor), liga a conta ao cadastro de cliente que já existe e pede serviços que o admin acompanha.
+3. **Loja de verdade:** salvar os pedidos no banco (hoje o "Finalizar compra" é só demonstração e o carrinho fica no navegador).
+4. **Versão em Laravel** (branch ou repositório separado) com o e-commerce completo, reaproveitando banco, visual e catálogo. Esta versão em PHP puro continua como o projeto base.
+5. **Limpar o histórico do Git:** os primeiros commits ainda têm o `mecanica.sql` antigo com dados pessoais; remover exige reescrever o histórico.
 ## Fotos
 
 As fotos de rodas, óleo (Ipiranga F1 Master) e palhetas, em `public/produtos/imagens/`, foram fornecidas pelo autor do projeto; as marcas e imagens pertencem aos respectivos donos. Se for publicar o projeto de forma comercial, troque por fotos próprias ou com licença.

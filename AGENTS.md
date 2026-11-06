@@ -38,6 +38,7 @@ php tests/executar.php            # SQLite em memória; precisa das extensões p
 
 - Reescrito em 2026-11-06 a pedido do Bruno ("atualizar pro PHP novo"). Problemas da versão antiga, já corrigidos: SQL injection nas buscas, exclusão por link GET (o registro sumia só no próximo carregamento), edição sem validação, filtro `dataNascimendo` digitado errado, filial Santa Rosa nunca marcada na edição, Bootstrap/jQuery carregados de `node_modules` que não estava no repositório, Vue sem versão (a CDN passou a servir o Vue 3 e a página quebrou), dados pessoais reais no `mecanica.sql`.
 - O histórico do Git ainda contém o `mecanica.sql` antigo com dados pessoais; limpar exige reescrever o histórico (decisão do Bruno).
+- Estado em 2026-11-06: redesign, loja e carrinho prontos e publicados no GitHub; site em hospedagem gratuita (InfinityFree) sem login, então as telas de admin estão abertas. Próximo passo combinado com o Bruno: login só de administrador, depois cadastro aberto de clientes e pedidos no banco; uma versão em Laravel fica para outra branch/repositório (por isso esta continua sem framework). Detalhes em "Próximos passos" do `README.md`.
 - Após alterações: `php -l` nos arquivos alterados e `php tests/executar.php`.
 
 ## Regras gerais
