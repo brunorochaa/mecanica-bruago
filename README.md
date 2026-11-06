@@ -24,6 +24,12 @@ Sistema web de uma oficina mecânica, com cadastro de clientes e de serviços e 
 | --- | --- |
 | ![Formulário de cliente](docs/imagens/formulario.png) | ![Lista de serviços no celular](docs/imagens/celular.png) |
 
+| Loja de produtos | Página do produto |
+| --- | --- |
+| ![Vitrine de produtos com opções e promoções](docs/imagens/produtos.png) | ![Página de um produto](docs/imagens/produto.png) |
+
+![Carrinho com resumo do pedido](docs/imagens/carrinho.png)
+
 ## Tecnologias
 
 - PHP 8.2 ou mais recente (testado no 8.5), sem framework

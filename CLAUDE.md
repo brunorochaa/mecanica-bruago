@@ -34,6 +34,15 @@ php tests/executar.php            # SQLite em memória; precisa das extensões p
 - Não commitar `config/config.php`, `node_modules/` nem dados pessoais reais no SQL.
 - Formatação: `.editorconfig` (4 espaços, LF, UTF-8).
 
+## README com prints
+
+- O `README.md` mostra o projeto com prints em `docs/imagens/` (PNG; 1280 de largura no computador, 500 no celular; poucos, só as telas principais), em tabelas lado a lado.
+- Só dados fictícios nas imagens: nada de nome, telefone, e-mail ou chave reais, e nada do serviço na tela.
+- Refaça os prints só quando a tela mudar de verdade: gere de novo e compare o tamanho do arquivo; se for idêntico, mantenha o antigo (evita inchar o repositório).
+- Como tirar: Chrome sem janela, `chrome.exe --headless=new --hide-scrollbars --window-size=1280,900 --virtual-time-budget=10000 --screenshot=<arquivo> <url>`, com um `--user-data-dir=<pasta temporária>` para cada print. Site estático abre por `file:///`; PHP sobe com `C:\Users\bruno\php\php.exe -S localhost:8000 -t public` (o PHP não está no PATH). O Chrome sem janela não passa de uns 500 de largura.
+- A rotina completa está na skill `/readme` do Claude Code.
+- Neste projeto: banco de demonstração em SQLite (o `config/config.php` local aponta para ele e não é versionado); `?tema=claro` ou `?tema=escuro` força o tema; o carrinho vem do `localStorage` (`carrinho-bruago`, lista de ids das opções), então preencha-o antes de tirar o print.
+
 ## Notas para futuros agentes
 
 - Reescrito em 2026-11-06 a pedido do Bruno ("atualizar pro PHP novo"). Problemas da versão antiga, já corrigidos: SQL injection nas buscas, exclusão por link GET (o registro sumia só no próximo carregamento), edição sem validação, filtro `dataNascimendo` digitado errado, filial Santa Rosa nunca marcada na edição, Bootstrap/jQuery carregados de `node_modules` que não estava no repositório, Vue sem versão (a CDN passou a servir o Vue 3 e a página quebrou), dados pessoais reais no `mecanica.sql`.
